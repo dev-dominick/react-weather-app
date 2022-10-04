@@ -1,0 +1,30 @@
+* {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+a {
+  color: white;
+  font-size: 24px;
+}
+
+a:hover {
+  color: red;
+}
+
+.navbar-brand {
+  font-size: 2.25rem;
+}
+
+.navbar {
+  justify-content: center;
+  font-size: 36px;
+  background-color: orange;
+  color: tan;
+}
+
+/* p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    margin-left: 199px;
+} */
+
