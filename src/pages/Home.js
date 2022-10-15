@@ -1,13 +1,14 @@
 import React from 'react'
 import '../styles/home.css'
-import InputSearch from '../components/input'
+import FetchWeather from '../components/FetchWeather'
 // import * as api from '../components/FetchWeather'
 
 export default function Home() {
     return (
         <div className='home'>
-            <h1>Fetch Weather</h1>
-            < InputSearch />
+            <h1>Weather App</h1>
+            < FetchWeather />
+
         </div>
     )
 }
