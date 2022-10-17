@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-export default function CurrentWeather({  today, hourly  }) {
+export default function CurrentWeather({  today  }) {
     return (
         <div>
             <Box sx={{ minWidth: 275, display: 'flex', justifyContent: 'center', paddingBottom: '3rem' }}>

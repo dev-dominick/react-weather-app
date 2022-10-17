@@ -1,12 +1,10 @@
 import React, { useState, } from 'react';
 import * as api from '../apiScript/weatherAPI';
+import '../styles/fetchWeather.css'
 import SearchField from './SearchField';
-import '../styles/input.css'
-import CurrentWeather from './Current';
-import HourlyWeather from './Hourly';
+import DisplayOptions from '../components/DisplayOptions'
 
 export default function FetchWeather() {
-
     const [state, setState] = useState({
         value: '',
         location: '',
@@ -15,65 +13,84 @@ export default function FetchWeather() {
         weeklyWeather: [],
         loading: false,
         error: false,
-    })
+    });
+
+
 
     const handleInputChange = e => {
         setState({
             ...state,
             value: e.target.value
         })
-    }
+    };
 
     async function showMeTheWeather(userInput) {
 
-            const gettingCoords = api.buildGeoApi(userInput);
-            const coords = await api.getCoordinates(gettingCoords);
-            console.log(coords);
-            console.log(coords.name);
-            const gettingWeather = api.buildWeatherAPI(coords);
-            const weather = await api.getWeatherData(gettingWeather);
-            console.log(weather);
-            
-            
-            const locationData = coords;
-            const weatherData = weather;
-            const hourlyData = weather.hourly;
+        const builingCoordsAPIFromInput = api.buildGeoApi(userInput);
+        const userInputAndCoords = await api.getCoordinates(builingCoordsAPIFromInput);
+        console.log(userInputAndCoords);
+        const buildingWeatherAPIFromCoords = api.buildWeatherAPI(userInputAndCoords);
+        const inputsWeather = await api.getWeatherData(buildingWeatherAPIFromCoords);
+        console.log(inputsWeather);
 
-            const current = {
-                city: locationData.name,
-                state: locationData.state,
-                country: locationData.country,
-                tempurature: weatherData.current.temp,
-                realFeel: weatherData.current.feels_like,
-                weatherDescription: weatherData.current.weather[0].description,
-                icon: weatherData.current.weather[0].icon,
-                uvIndex: weatherData.current.uvi
-                };
-            
-            console.log(current);
+        const currentData = inputsWeather.current
+        const hourlyData = inputsWeather.hourly;
+        const weeklyData = inputsWeather.daily
 
-            
+        const current = {
+            city: userInputAndCoords.name,
+            state: userInputAndCoords.state,
+            country: userInputAndCoords.country,
+            tempurature: currentData.temp,
+            realFeel: currentData.feels_like,
+            main: currentData.weather[0].main,
+            weatherDescription: currentData.weather[0].description,
+            icon: currentData.weather[0].icon,
+        };
 
-            const hourlyWeather = hourlyData.map((data, index) => {
-                return{
-                    key: index,
-                    tempurature: data.temp,
-                    realFeel: data.feels_like,
-                    description: data.weather[0].description,
-                    icon: data.weather[0].icon
+        console.log(current);
 
-                }
-            } )
-            console.log(hourlyWeather);
+        const hourlyWeather = hourlyData.map((data, index) => {
+            return {
+                key: index,
+                tempurature: data.temp,
+                realFeel: data.feels_like,
+                main: data.weather[0].main,
+                description: data.weather[0].description,
+                icon: data.weather[0].icon
 
-            setState({
-                ...state,
-                current,
-                hourlyWeather,
-                loading: false,
-                error: false
-            })
-    }
+            }
+        })
+
+        console.log(hourlyWeather);
+
+        // todo get all weekly weather data, set dates and times to display, get morning, evening, max, min, and night temps,
+        // round temps so theyre not decimals, set a f or c changer
+        // render weather display on nav click
+        const weeklyWeather = weeklyData.map((data, index) => {
+            return {
+                key: index,
+                highTemp: data.temp.max,
+                lowTemp: data.temp.min,
+                main: data.weather[0].main,
+                description: data.weather[0].description,
+                icon: data.weather[0].icon
+
+            }
+        })
+
+        console.log(weeklyWeather);
+
+
+        setState({
+            ...state,
+            current,
+            hourlyWeather,
+            weeklyWeather,
+            loading: false,
+            error: false
+        })
+    };
 
 
     const handleInputSubmit = e => {
@@ -91,14 +108,7 @@ export default function FetchWeather() {
 
         showMeTheWeather(state.value)
 
-    }
-
-
-
-    // const data = state.loading ? <div>I am loading</div> : <div>Is it currently {state.current.tempurature} degrees in {state.current.city}</div>
-    // const hourly = isLoading ? <div></div> : {storage.map}    
-
-
+    };
 
     return (
         <div className='fetching-weather'>
@@ -110,20 +120,13 @@ export default function FetchWeather() {
                     change={handleInputChange}
                     submit={handleInputSubmit}
                 />
-            </div>
 
-            {/* <div className='weatherGreeting'>{data}</div> */}
-            <div>
-                < CurrentWeather 
-                today={state.current} 
-                />
-            </div>
-            <div>
-                < HourlyWeather 
-                // today={state.current} 
-                hourly={state.hourlyWeather} 
+                < DisplayOptions
+                    today={state.current}
+                    hourly={state.hourlyWeather}
+                    weekly={state.weeklyWeather}
                 />
             </div>
         </div>
     );
-}
+};
