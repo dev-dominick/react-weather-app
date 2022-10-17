@@ -13,13 +13,3 @@
 .weatherGreeting {
     margin-bottom: 3rem;
 }
-
-.hourly-weather-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    margin-left: 16vw;
-    margin-right: 16vw;
-    flex-wrap: wrap;
-}

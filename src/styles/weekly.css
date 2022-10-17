@@ -1,0 +1,18 @@
+.weekly-display-container {
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px black solid;
+    margin-top: 1rem;
+    width: 75vw;
+}
+
+.weekly-display {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid red;
+}
+
+#text{
+    font-size: 1rem;
+}
