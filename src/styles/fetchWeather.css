@@ -13,3 +13,10 @@
 .weatherGreeting {
     margin-bottom: 3rem;
 }
+
+.current-search {
+    background-color: transparent;
+    width: 100vw;
+    height: 25vh;
+    border: 1px solid red;
+}

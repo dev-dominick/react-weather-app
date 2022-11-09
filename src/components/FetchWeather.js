@@ -7,7 +7,6 @@ import DisplayOptions from '../components/DisplayOptions'
 export default function FetchWeather() {
     const [state, setState] = useState({
         value: '',
-        location: '',
         current: {},
         hourlyWeather: [],
         weeklyWeather: [],
@@ -15,7 +14,7 @@ export default function FetchWeather() {
         error: false,
     });
 
-
+    const [tab, setTab] = React.useState('')
 
     const handleInputChange = e => {
         setState({
@@ -64,9 +63,6 @@ export default function FetchWeather() {
 
         console.log(hourlyWeather);
 
-        // todo get all weekly weather data, set dates and times to display, get morning, evening, max, min, and night temps,
-        // round temps so theyre not decimals, set a f or c changer
-        // render weather display on nav click
         const weeklyWeather = weeklyData.map((data, index) => {
             return {
                 key: index,
@@ -81,34 +77,36 @@ export default function FetchWeather() {
 
         console.log(weeklyWeather);
 
-
         setState({
             ...state,
             current,
             hourlyWeather,
             weeklyWeather,
             loading: false,
-            error: false
+            error: false,
         })
+
+        setTab("Current Forecast")
     };
 
 
     const handleInputSubmit = e => {
         console.log('you submitted me');
-
         e.preventDefault();
-
         setState({
             ...state,
-            location: e.target.value,
-            loading: true
+            loading: true,
         })
 
-        console.log(state.value);
+        setTab("Loading")
 
+        console.log(state.value);
+        console.log(tab)
         showMeTheWeather(state.value)
 
     };
+
+
 
     return (
         <div className='fetching-weather'>
@@ -119,12 +117,15 @@ export default function FetchWeather() {
                     data={state}
                     change={handleInputChange}
                     submit={handleInputSubmit}
+                    onClick={() => setState(state.displayPage === "Current Forecast")}
                 />
 
                 < DisplayOptions
                     today={state.current}
                     hourly={state.hourlyWeather}
                     weekly={state.weeklyWeather}
+                    tabState={tab}
+                    tabSetState={setTab}
                 />
             </div>
         </div>

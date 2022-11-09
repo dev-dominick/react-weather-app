@@ -11,9 +11,9 @@ import WeeklyWeather from './Weekly';
 
 const pages = ['Current Forecast', 'Hourly Forecast', 'Weekly Forecast'];
 
-const DisplayOptions = ({ today, hourly, weekly }) => {
+const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState }) => {
 
-    const [tab, setTab] = React.useState("")
+    // const [tab, setTab] = React.useState('')
 
     return (
         <>
@@ -24,7 +24,7 @@ const DisplayOptions = ({ today, hourly, weekly }) => {
                             {pages.map((page) => (
                                 <Button
                                     key={page}
-                                    onClick={() => setTab(`${page}`)}
+                                    onClick={() => tabSetState(`${page}`)}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
                                 >
                                     {page}
@@ -34,10 +34,12 @@ const DisplayOptions = ({ today, hourly, weekly }) => {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <div>
-                {tab === "Current Forecast" && < CurrentWeather today={today} />}
-                {tab === "Hourly Forecast" && < HourlyWeather hourly={hourly} />}
-                {tab === "Weekly Forecast" && < WeeklyWeather weekly={weekly} />}
+            <div >
+                {tabState === '' && <div>enter your city</div>}
+                {tabState === 'Loading' && <div>Loading</div>}
+                {tabState === 'Current Forecast' && < CurrentWeather today={today} />}
+                {tabState === 'Hourly Forecast' && < HourlyWeather hourly={hourly} />}
+                {tabState === 'Weekly Forecast' && < WeeklyWeather weekly={weekly} />}
 
             </div>
         </>
