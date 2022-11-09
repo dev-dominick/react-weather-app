@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 
 export default function CurrentWeather({  today  }) {
     return (
-        <div>
+        <>
             <Box sx={{ minWidth: 275, display: 'flex', justifyContent: 'center', paddingBottom: '3rem' }}>
                 <Card variant="outlined" sx={{width: '50vw', display: 'flex', justifyContent: 'center'}}>
                     <CardContent>
@@ -40,6 +40,6 @@ export default function CurrentWeather({  today  }) {
                 hourlyData={hourly} 
                 />
             </div> */}
-        </div>
+        </>
     )
 }
