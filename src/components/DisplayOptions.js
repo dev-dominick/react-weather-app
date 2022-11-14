@@ -11,7 +11,7 @@ import WeeklyWeather from './Weekly';
 
 const pages = ['Current Forecast', 'Hourly Forecast', 'Weekly Forecast'];
 
-const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState }) => {
+const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState, time, day }) => {
 
     // const [tab, setTab] = React.useState('')
 
@@ -37,9 +37,9 @@ const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState }) => {
             <div >
                 {tabState === '' && <div>enter your city</div>}
                 {tabState === 'Loading' && <div>Loading</div>}
-                {tabState === 'Current Forecast' && < CurrentWeather today={today} />}
+                {tabState === 'Current Forecast' && < CurrentWeather today={today} time={time} />}
                 {tabState === 'Hourly Forecast' && < HourlyWeather hourly={hourly} />}
-                {tabState === 'Weekly Forecast' && < WeeklyWeather weekly={weekly} />}
+                {tabState === 'Weekly Forecast' && < WeeklyWeather weekly={weekly} day={day} />}
 
             </div>
         </>
