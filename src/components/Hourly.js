@@ -1,23 +1,7 @@
 import React from 'react'
 import '../styles/hourly.css'
 
-
-// let dayOfWeek = date.getDay().toString();
-
-// let month = date.getMonth().toString();
-
-// let dayOfMonth = date.getDate().toString();
-
-// let year = date.getFullYear().toString();
-
-// let wtf =  month + dayOfMonth + year
-
-
-
 export default function HourlyWeather({ hourly,  }) {
-
-
-
 
     return (
 
