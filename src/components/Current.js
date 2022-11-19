@@ -7,30 +7,48 @@ import Typography from '@mui/material/Typography';
 export default function CurrentWeather({ today, time }) {
     return (
         <>
-            <Box sx={{ minWidth: 275, display: 'flex', justifyContent: 'center', paddingBottom: '3rem' }}>
-                <Card variant="outlined" sx={{ width: '50vw', display: 'flex', justifyContent: 'center' }}>
-                    <CardContent>
+            <Box sx={{ minWidth: 275, display: 'flex', justifyContent: 'center', paddingBottom: '.5rem' }}>
+                <Card variant="outlined" sx={{ width: '75vw', height: '40vh', display: 'flex', justifyContent: 'center', }}>
+                    <CardContent
+                    sx={{
+                        margin: '0',
+                        padding: '0',
+                        // marginRight: '1rem',
+                        // marginLeft: '1rem',
+                        color: 'black',
+                        width: '100%'
+                    }}
+                    >
                         
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            Weather in {today.city}, {today.state}, {today.country}
-                            <br></br>as of {time}
+                        <Typography variant="p" component="div" sx={{
+                            backgroundColor: 'lightgray',
+                            marginBottom: 'auto',
+                            marginTop: 'auto',
+                            height: '4rem',
+                            
+                        }} >
+                            {today.city}, {today.state}, {today.country} as of {time}
                         </Typography>
 
-                        <Typography variant="p" component="div">
-                            Current Weather is {today.tempurature}°f
+                        <Typography variant="p" component="div" gutterBottom>
+                            {today.tempurature}°f
                         </Typography>
 
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        <Typography sx={{ mb: 1.5 }} gutterBottom>
                             Real Feel is {today.realFeel}°f
                         </Typography>
 
-                        <Typography variant="body2">
+                        <Typography sx={{ mb: 1.5 }} gutterBottom>
+                            {today.main}
+                        </Typography>
+
+                        <Typography variant="body2" gutterBottom>
                             {today.weatherDescription}
                         </Typography>
-                        <Typography variant="body2">
+                        <Typography variant="body2" gutterBottom>
                             Sunrise at {today.sunrise} today
                         </Typography>
-                        <Typography variant="body2">
+                        <Typography variant="body2" gutterBottom>
                             Sunset at {today.sunset} today
                         </Typography>
 
