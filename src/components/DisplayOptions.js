@@ -34,6 +34,7 @@ const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState, time, da
                     </Toolbar>
                 </Container>
             </AppBar>
+            
             <div >
                 {tabState === '' && <div>enter your city</div>}
                 {tabState === 'Loading' && <div>Loading</div>}

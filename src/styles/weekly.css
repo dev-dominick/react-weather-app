@@ -1,18 +1,31 @@
 .weekly-display-container {
     margin-right: auto;
     margin-left: auto;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     margin-top: 1rem;
     width: 75vw;
 }
 
+.weeklyHeader {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
 .weekly-display {
+    background-color: darkgrey;
     width: 50%;
     margin-right: auto;
     margin-left: auto;
-    border: 1px solid red;
+    border: 3px solid black;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
 }
 
-#text{
+.weeklyTitle {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.weeklyText {
     font-size: 1rem;
 }
