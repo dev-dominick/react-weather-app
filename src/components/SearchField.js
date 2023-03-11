@@ -25,7 +25,7 @@ export default function SearchField({ value, data, change, submit }) {
                     value={value}
                     onChange={change}
                 />
-                <Button variant="contained" onClick={submit}>Search</Button>
+                <Button type='submit' variant="contained" onClick={submit}>Search</Button>
                 {/* <button
                     //  onClick={getLocation}
                     onClick={submit}

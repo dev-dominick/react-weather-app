@@ -128,20 +128,20 @@ export default function FetchWeather() {
 
 
 
-    const handleInputSubmit = e => {
-        console.log('you submitted me');
-        e.preventDefault();
-        setState({
-            ...state,
-            loading: true,
-        })
+    const onSubmitForm = (e) => {
+      e.preventDefault();
+      console.log("you submitted me");
 
-        setTab("Loading")
+      setState({
+        ...state,
+        loading: true,
+      });
 
-        console.log(state.value);
-        console.log(tab)
-        showMeTheWeather(state.value)
+      setTab("Loading");
 
+      console.log(state.value);
+      console.log(tab);
+      showMeTheWeather(state.value);
     };
 
 
@@ -149,25 +149,26 @@ export default function FetchWeather() {
 
 
     return (
-        <div className='fetching-weather'>
-            { date }
-            <div className='input-search'>
-                < SearchField
-                    value={state.value}
-                    data={state}
-                    change={handleInputChange}
-                    submit={handleInputSubmit}
-                    onClick={() => setState(state.displayPage === "Current Forecast")}
-                />
+      <div className="fetching-weather">
+        {date}
+        <div className="input-search">
+          <SearchField
+            value={state.value}
+            data={state}
+            change={handleInputChange}
+            submit={onSubmitForm}
+            onClick={() => setState(state.displayPage === "Current Forecast")}
+          />
 
-                < DisplayOptions
-                    today={state.current} time={date}
-                    hourly={state.hourlyWeather} 
-                    weekly={state.weeklyWeather} 
-                    tabState={tab}
-                    tabSetState={setTab}
-                />
-            </div>
+          <DisplayOptions
+            today={state.current}
+            time={date}
+            hourly={state.hourlyWeather}
+            weekly={state.weeklyWeather}
+            tabState={tab}
+            tabSetState={setTab}
+          />
         </div>
+      </div>
     );
 };

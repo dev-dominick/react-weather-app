@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.4",
+    "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.9",
@@ -14,9 +14,9 @@
     "env": "^0.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
+    "theme-ui": "^0.15.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
