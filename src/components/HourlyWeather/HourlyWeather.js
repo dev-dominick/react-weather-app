@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/hourly.css'
+import './HourlyWeather.css'
 
 export default function HourlyWeather({ hourly,  }) {
 

@@ -4,16 +4,15 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import CurrentWeather from './Current';
-import HourlyWeather from './Hourly';
-import WeeklyWeather from './Weekly';
+import CurrentWeather from '../CurrentWeather/CurrentWeather';
+import HourlyWeather from '../HourlyWeather/HourlyWeather';
+import WeeklyWeather from '../WeeklyWeather/WeeklyWeather';
 
 
 const pages = ['Current Forecast', 'Hourly Forecast', 'Weekly Forecast'];
 
 const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState, time, day }) => {
 
-    // const [tab, setTab] = React.useState('')
 
     return (
         <>
@@ -36,7 +35,7 @@ const DisplayOptions = ({ today, hourly, weekly, tabState, tabSetState, time, da
             </AppBar>
             
             <div >
-                {tabState === '' && <div>enter your city</div>}
+                {tabState === '' && null}
                 {tabState === 'Loading' && <div>Loading</div>}
                 {tabState === 'Current Forecast' && < CurrentWeather today={today} time={time} />}
                 {tabState === 'Hourly Forecast' && < HourlyWeather hourly={hourly} />}

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/weekly.css'
+import './WeeklyWeather.css'
 
 
 export default function WeeklyWeather({ weekly }) {

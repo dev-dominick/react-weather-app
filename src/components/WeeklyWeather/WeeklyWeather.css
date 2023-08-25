@@ -1,18 +1,17 @@
-.hourly-display-container {
+/* .weekly-display-container {
     margin-right: auto;
     margin-left: auto;
-    /* border: 1px black solid; */
+    border: 1px black solid;
     margin-top: 1rem;
     width: 75vw;
 }
 
-.hourlyHeader {
+.weeklyHeader {
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
-
-.hourly-display {
+.weekly-display {
     background-color: darkgrey;
     width: 50%;
     margin-right: auto;
@@ -22,11 +21,11 @@
     margin-bottom: 1rem;
 }
 
-.hourlyTitle {
+.weeklyTitle {
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
-.hourlyText {
+.weeklyText {
     font-size: 1rem;
-}
+} */
