@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import * as api from "../../resources/weatherAPI";
 import "./Home.css";
-import SearchField from "../../components/SearchField/SearchField";
-import DisplayOptions from "../../components/DisplayOptions/DisplayOptions";
-import { months, days } from "../../utils/constants/constants";
+import SearchField from "../SearchField/SearchField";
+import DisplayOptions from "../DisplayOptions/DisplayOptions";
 import { HH, HH_MM } from "../../utils/constants/constants";
+import { date } from '../../utils/helpers/helpers'
+import { months, days } from "../../utils/constants/constants";
 
-const currentDate = new Date();
-const date = `${days[currentDate.getDay()]}, ${
-  months[currentDate.getMonth()]
-} ${currentDate.getDate()} `;
-
-export default function Home() {
+const WeatherAppLayout = () => {
   const [state, setState] = useState({
     value: "",
     current: {},
@@ -37,12 +33,6 @@ export default function Home() {
       const userInputAndCoords = await api.getCoordinates(
         buildingCoordsAPIFromInput
       );
-
-      // if (userInputAndCoords === undefined || null) {
-      //   // alert('try again');
-      //   setState(...state, state.loading = false)
-      //   setTab(<div>error Please search again</div>)
-      // }
 
       console.log(userInputAndCoords);
 
@@ -171,3 +161,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default WeatherAppLayout;

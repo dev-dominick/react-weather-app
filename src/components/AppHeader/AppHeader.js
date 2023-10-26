@@ -8,6 +8,7 @@ const AppHeader = ({onClick, theme}) => {
   return (
     <Box
       sx={{
+        border: '1px solid black',
         display: "flex",
         justifyContent: "center",
         backgroundColor: "background.default",

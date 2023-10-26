@@ -1,11 +1,10 @@
 // import "./styles/App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-
+import WeatherAppLayout from "./components/AppLayout/WeatherAppLayout";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<WeatherAppLayout />} />
     </Routes>
   );
 }
