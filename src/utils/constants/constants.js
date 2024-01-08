@@ -25,3 +25,11 @@ export const days = [
 
 export const HH_MM = {hour: '2-digit', minute: '2-digit' };
 export const HH = {hour: '2-digit' };
+
+
+// const coordsApiByUserSearch = `${REACT_APP_API}/geo/1.0/direct?q=${userInput}&limit=5&appid=${REACT_APP_API_KEY}`;
+
+// const buildGeoApi = (userInput) => {
+//   return `${REACT_APP_API}/geo/1.0/direct?q=${userInput}&limit=5&appid=${REACT_APP_API_KEY}`;
+// };
+

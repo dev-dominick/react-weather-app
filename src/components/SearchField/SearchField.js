@@ -1,18 +1,41 @@
-import React from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-export default function SearchField({ value, data, change, submit }) {
+import { useGetWeather } from '../../Hooks/useGetWeather/useGetWeather'
+import { Search } from "@mui/icons-material";
+
+const SearchField = () => {
+  const [userLocationSearch, setUserLocationSearch] = useState("");
+  console.log(
+    "userLocation",
+    userLocationSearch === "" ? "nothing entered" : userLocationSearch
+  );
+
+  const { mutate: sendUserLocation } = useGetWeather();
+
+  const handleUserInput = (ev) => {
+    setUserLocationSearch(ev.target.value);
+  };
+
+  const onSubmitForm = (ev) => {
+    ev.preventDefault();
+    if (userLocationSearch){
+      sendUserLocation(userLocationSearch);      
+    } else {
+      return
+    }
+  };
+
   return (
     <div>
-      <div>Search for your city</div>
       <Box
         component="form"
         sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
+          "& > :not(style)": { m: 1,},
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           alignItems: "center",
           marginTop: "2rem",
           marginBottom: "2rem",
@@ -21,18 +44,30 @@ export default function SearchField({ value, data, change, submit }) {
         autoComplete="off"
       >
         <TextField
+        required
           sx={{ color: "yellow !important" }}
+          size="small"
           id="cityInput"
-          label="Search Your City"
-          variant="standard"
-          onSubmit={submit}
-          value={value}
-          onChange={change}
+          variant="outlined"
+          label="Search"
+          value={userLocationSearch}
+          onChange={handleUserInput}
+          onSubmit={onSubmitForm}
+          // value={(e) => setUserLocationSearch(e.target.value)}
         />
-        <Button type="submit" variant="contained" onClick={submit}>
-          Search
+        <Button
+          sx={{
+            width: 1/5
+          }}
+          size="medium"
+          type="submit" 
+          variant="contained" 
+          onClick={onSubmitForm}>
+          <Search />
         </Button>
       </Box>
     </div>
   );
-}
+};
+
+export default SearchField;

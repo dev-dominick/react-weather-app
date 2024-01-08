@@ -1,34 +1,13 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
-import AppHeader from "./components/AppHeader/AppHeader";
-import AppRoutes from "./AppRoutes";
+import { createContext, useState, useMemo } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
-function App() {
-  const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+console.log('toggle theme');
 
-  return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100vh !important",
-          backgroundColor: "background.default",
-          color: "text.primary",
-        }}
-      >
-        <AppHeader onClick={colorMode.toggleColorMode} theme={theme} />
-        <AppRoutes />
-      </Box>
-  );
-}
-
-export default function ToggleColorMode() {
-  const [mode, setMode] = React.useState("light");
-  const colorMode = React.useMemo(
+const ToggleColorMode = ({children}) => {
+  const [mode, setMode] = useState("dark");
+  const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
@@ -37,7 +16,7 @@ export default function ToggleColorMode() {
     []
   );
 
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
@@ -50,8 +29,10 @@ export default function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <App />
+        {children}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-}
+};
+
+export default ToggleColorMode;
