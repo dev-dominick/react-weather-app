@@ -1,34 +1,36 @@
-import { useState } from "react";
-
 import { useWeatherStore } from "../../store/WeatherStore";
 import { useLocationStore } from "../../store/LocationStore";
 import { isEmpty, getMaxTemp, getMinTemp } from "../../utils/helpers/helpers";
-import DisplayOptions from "../DisplayOptions/DisplayOptions";
 import MyLocationDisplay from "../MyLocationDisplay/MyLocationDisplay";
+import HourlyWeather from "../HourlyWeather/HourlyWeather";
+import TenDayForeCast from "../TenDayForeCast/TenDayForeCast";
+import AppIntro from "../AppIntro/AppIntro";
 
 const WeatherAppLayout = () => {
   // weather state
   const weather = useWeatherStore((state) => state.weather);
-  console.log("weather", weather);
-
-  const { current, daily, hourly } = weather
-  console.log("daily", getMaxTemp(daily));
-
-
+  console.log("weather", weather?.daily);
   const location = useLocationStore((state) => state.location);
   console.log("location", !isEmpty(location));
 
   return (
-    <div className="flex flex-col flex-wrap content-center">
-      <div className="mb-10">
-        <MyLocationDisplay
-          location={location}
-          currentWeather={current}
-          tempHi={getMaxTemp(daily)}
-          tempLow={getMinTemp(daily)}
-        />
+    <div className="flex flex-col flex-wrap content-center min-w-full min-h-screen">
+      <div className="md:w-2/3">
+        {!weather ? (
+          <AppIntro />
+        ) : (
+          <>
+            <MyLocationDisplay
+              location={location}
+              currentWeather={weather?.current}
+              tempHi={getMaxTemp(weather?.daily)}
+              tempLow={getMinTemp(weather?.daily)}
+            />
+            <HourlyWeather hourly={weather?.hourly ?? "no value found"} />
+            <TenDayForeCast daily={weather?.daily} />
+          </>
+        )}
       </div>
-      <DisplayOptions />
     </div>
   );
 };

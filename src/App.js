@@ -10,14 +10,12 @@ const App = () => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
-  console.log("app");
-
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100vh !important",
+        height: "100% !important",
         backgroundColor: "background.default",
         color: "text.primary",
       }}
