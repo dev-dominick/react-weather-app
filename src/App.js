@@ -4,7 +4,7 @@ import AppRoutes from "./AppRoutes";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "./toggleTheme";
-import HistorySideBar from "./components/HistorySideBar/HistorySideBar";
+// import HistorySideBar from "./components/HistorySideBar/HistorySideBar";
 
 const App = () => {
   const theme = useTheme();

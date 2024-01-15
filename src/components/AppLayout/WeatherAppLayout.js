@@ -9,9 +9,7 @@ import AppIntro from "../AppIntro/AppIntro";
 const WeatherAppLayout = () => {
   // weather state
   const weather = useWeatherStore((state) => state.weather);
-  console.log("weather", weather?.daily);
   const location = useLocationStore((state) => state.location);
-  console.log("location", !isEmpty(location));
 
   return (
     <div className="flex flex-col flex-wrap content-center min-w-full min-h-screen">

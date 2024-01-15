@@ -3,28 +3,21 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-import { useGetWeather } from '../../Hooks/useGetWeather/useGetWeather'
+import { useGetWeather } from "../../Hooks/useGetWeather/useGetWeather";
 import { Search } from "@mui/icons-material";
 
 const SearchField = () => {
   const [userLocationSearch, setUserLocationSearch] = useState("");
-  console.log(
-    "userLocation",
-    userLocationSearch === "" ? "nothing entered" : userLocationSearch
-  );
-
   const { mutate: sendUserLocation } = useGetWeather();
-
   const handleUserInput = (ev) => {
     setUserLocationSearch(ev.target.value);
   };
-
   const onSubmitForm = (ev) => {
     ev.preventDefault();
-    if (userLocationSearch){
-      sendUserLocation(userLocationSearch);      
+    if (userLocationSearch) {
+      sendUserLocation(userLocationSearch);
     } else {
-      return
+      return;
     }
   };
 
@@ -33,7 +26,7 @@ const SearchField = () => {
       <Box
         component="form"
         sx={{
-          "& > :not(style)": { m: 1,},
+          "& > :not(style)": { m: 1 },
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
@@ -44,7 +37,7 @@ const SearchField = () => {
         autoComplete="off"
       >
         <TextField
-        required
+          required
           sx={{ color: "yellow !important" }}
           size="small"
           id="cityInput"
@@ -57,12 +50,13 @@ const SearchField = () => {
         />
         <Button
           sx={{
-            width: 1/5
+            width: 1 / 5,
           }}
           size="medium"
-          type="submit" 
-          variant="contained" 
-          onClick={onSubmitForm}>
+          type="submit"
+          variant="contained"
+          onClick={onSubmitForm}
+        >
           <Search />
         </Button>
       </Box>

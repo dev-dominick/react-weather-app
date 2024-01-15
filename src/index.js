@@ -14,8 +14,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const queryClient = new QueryClient();
 
-console.log('root');
-
 root.render(
   <React.StrictMode>
     <BrowserRouter>
