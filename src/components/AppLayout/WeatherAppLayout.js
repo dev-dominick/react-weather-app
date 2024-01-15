@@ -1,6 +1,6 @@
 import { useWeatherStore } from "../../store/WeatherStore";
 import { useLocationStore } from "../../store/LocationStore";
-import { isEmpty, getMaxTemp, getMinTemp } from "../../utils/helpers/helpers";
+import { getMaxTemp, getMinTemp } from "../../utils/helpers/helpers";
 import MyLocationDisplay from "../MyLocationDisplay/MyLocationDisplay";
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 import TenDayForeCast from "../TenDayForeCast/TenDayForeCast";
